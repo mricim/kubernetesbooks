@@ -13,7 +13,7 @@ A -- build--> B[Docker]
 B -- push -->C((Docker Hub))
 C -- create pod --> D[kubernetes] 
 ```
-En esta imagen podemos observar que nuestro código java tendrá control de versiones con Git usando Github. Una vez nuestro cádigo sea el deseado o en su defecto una versión que queramos deployar se creara el archivo "jar", este será usado para crear una imagen "Docker" la cual será subida a DockerHub desde donde se obtendrá para crear los pods en kubernetes.
+En esta imagen podemos observar que nuestro código java tendrá control de versiones con Git usando Github. Una vez nuestro código sea el deseado o en su defecto una versión que queramos deployar crearemos el archivo "jar", este será usado para crear una imagen "Docker" la cual será subida a DockerHub desde donde se obtendrá para crear los pods en kubernetes.
 <br/>
 
 ------------
@@ -50,8 +50,11 @@ F((ReplicationController)) --> M
 
 Estos por ahora los creamos usando la herramienta "Eclipse" eligiendo construirlas con "Maven".
 Podrían crearse directamente a la hora de crear la imagen de Docker y descargando el código de GitHub, pero por motivos de complejidad y falta de tiempo he decidido hacerlo así.
+
 [GitHub Cliente](https://github.com/mricim/booktestClient)
-[GitHub Servidor]()
+
+[GitHub Servidor](https://github.com/mricim/booktestServer)
+
 Necesitaremos pasar al "cliente" la URL donde encontrar a la parte "servidor" para eso usaremos una variable "ENV" en el Dockerfile y será leída con `System.getenv().get("URL_SERVER_BOOKS")` en el código Java.
 <br/>
 
@@ -130,7 +133,8 @@ Con este mismo comando también podemos ver las ip de nuestros nodos.
 
 Nos descargamos/clonamos el contenido de este repositorio y tenemos que ejecutar desde dentro de la carpeta descargada/clonada:
 `kubectl apply .`
-al realizar esta acción se crearan todos los pods con sus respectivos servicios. Podemos ejecutar `kubectl get all` para comprobar la creación:
+al realizar esta acción se crearan todos los pods con sus respectivos servicios.
+Podemos ejecutar `kubectl get all` para comprobar la creación:
 ![image](https://user-images.githubusercontent.com/56126432/145467673-4f4ac1a3-3d8d-49e7-b2b1-b03ed68727c4.png)
 Ahora debemos copiar la **ip externa** del `service/tcp-loadbalancer` en nuestro dominio creado en [DigitalOcean](https://www.digitalocean.com/) 
 ![image](https://user-images.githubusercontent.com/56126432/145468867-3af64f93-41c0-412e-9211-4ac17ff2d1b4.png)
