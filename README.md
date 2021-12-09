@@ -141,6 +141,17 @@ Ahora debemos copiar la **ip externa** del `service/tcp-loadbalancer` en nuestro
 
 Una vez pasen algo mas de 60 segundos deberemos ejecutar `kubectl delete pod/traefik-xxxxxxxxx` para que se generen los certificados, que no se habían generado ya que la ip no estaba apuntando a nuestros dominios
 
+Podremos visitar [https://books.ericcm.tk/](https://books.ericcm.tk/) y ver que todo esta funcioando correctamente:
+![image](https://user-images.githubusercontent.com/56126432/145479996-86b0b515-ba1e-4153-8421-009a624aead1.png)
+
+Si hacemos clic sobre el boton "go all books" podremos observar que esta importando la lista de libros del Docker que hace de servidor:
+![image](https://user-images.githubusercontent.com/56126432/145480148-c9ede949-ac68-4596-b686-45d7c18a20d5.png)
+
+Este ultimo (el servidor) esta publicado en [https://booksa.ericcm.tk/](https://booksa.ericcm.tk/):
+![image](https://user-images.githubusercontent.com/56126432/145480545-914d2b46-8c22-45a8-ab3c-6b3442d65146.png)
+
+
+
 ##### Extra code
 Podemos incluir `livenessProbe` y `readinessProbe` para comprobar que nuestros pods están vivos y listos para ejecutarse respectivamente:
 ```
