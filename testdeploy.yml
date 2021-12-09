@@ -1,0 +1,28 @@
+apiVersion: v1
+kind: ReplicationController
+metadata:
+  name: springbooktestclient
+spec:
+  replicas: 1
+#  selector:
+#    matchLabels:
+#      app: springbooktestclient
+  template:
+    metadata:
+      labels:
+        app: springbooktestclient
+#        role: springbooktestclient
+    spec:
+      containers:
+      - name: springbooktestclient
+        image: mricim/book_test_client:initial
+        imagePullPolicy: Always
+        ports:
+          - containerPort: 8081
+        env:
+        - name: URL_SERVER_BOOKS
+          value: "https://booksa.ericcm.tk"
+#          valueFrom:
+#           configMapKeyRef:
+#             name: ingressroutetls3
+#             key: host

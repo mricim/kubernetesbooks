@@ -1,0 +1,21 @@
+apiVersion: v1
+kind: ReplicationController
+metadata:
+  name: springbooktestserver
+spec:
+  replicas: 1
+#  selector:
+#    matchLabels:
+#      app: springbooktestclient
+  template:
+    metadata:
+      labels:
+        app: springbooktestserver
+#        role: springbooktestclient
+    spec:
+      containers:
+      - name: springbooktestserver
+        image: mricim/booktestserver:initial
+        imagePullPolicy: Always
+        ports:
+          - containerPort: 8086
