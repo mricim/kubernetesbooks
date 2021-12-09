@@ -26,3 +26,25 @@ spec:
 #           configMapKeyRef:
 #             name: ingressroutetls3
 #             key: host
+#        livenessProbe:
+#          httpGet:
+#            path: /
+#            port: 8081
+#            httpHeaders:
+#            - name: X-Custom-Header
+#              value: Awesome
+#          initialDelaySeconds: 10
+#          periodSeconds: 3
+##          failureThreshold: 1
+##Check ready container
+#        readinessProbe:
+#          httpGet:
+#            path: /books/libraryp
+#            port: 8081
+##            httpHeaders:
+##            - name: X-Custom-Header
+##              value: Awesome
+#          initialDelaySeconds: 6
+#          periodSeconds: 5
+#          successThreshold: 1
+#          timeoutSeconds: 1
